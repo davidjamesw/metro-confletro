@@ -1,23 +1,27 @@
 package uk.co.davidjamesw.metroconfletro.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Retro {
 
-    private List<String> attendees;
-    private List<String> liked;
-    private List<String> learned;
-    private List<String> longedFor;
-    private List<String> lacked;
-    private List<String> actions;
+    @SerializedName("Liked")
+    private List<Item> liked;
+    @SerializedName("Learned")
+    private List<Item> learned;
+    @SerializedName("Longed For")
+    private List<Item> longedFor;
+    @SerializedName("Lacked")
+    private List<Item> lacked;
+    @SerializedName("Actions")
+    private List<Item> actions;
 
-    public Retro(List<String> attendees,
-                 List<String> liked,
-                 List<String> learned,
-                 List<String> longedFor,
-                 List<String> lacked,
-                 List<String> actions) {
-        this.attendees = attendees;
+    public Retro(List<Item> liked,
+                 List<Item> learned,
+                 List<Item> longedFor,
+                 List<Item> lacked,
+                 List<Item> actions) {
         this.liked = liked;
         this.learned = learned;
         this.longedFor = longedFor;
@@ -25,27 +29,23 @@ public class Retro {
         this.actions = actions;
     }
 
-    public List<String> getAttendees() {
-        return attendees;
-    }
-
-    public List<String> getLiked() {
+    public List<Item> getLiked() {
         return liked;
     }
 
-    public List<String> getLearned() {
+    public List<Item> getLearned() {
         return learned;
     }
 
-    public List<String> getLongedFor() {
+    public List<Item> getLongedFor() {
         return longedFor;
     }
 
-    public List<String> getLacked() {
+    public List<Item> getLacked() {
         return lacked;
     }
 
-    public List<String> getActions() {
+    public List<Item> getActions() {
         return actions;
     }
 }
