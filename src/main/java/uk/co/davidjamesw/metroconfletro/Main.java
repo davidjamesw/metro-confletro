@@ -12,8 +12,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String json = Files.readString(Path.of(args[0]));
         Gson gson = new Gson();
-        MarkdownGenerator markdownGenerator =
-                new MarkdownGenerator(gson.fromJson(json, Retro.class));
+        MarkupGenerator markupGenerator =
+                new MarkupGenerator(gson.fromJson(json, Retro.class));
     }
 
 }

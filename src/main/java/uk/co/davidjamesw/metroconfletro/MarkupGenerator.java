@@ -4,23 +4,23 @@ import uk.co.davidjamesw.metroconfletro.model.Retro;
 
 import java.util.stream.Collectors;
 
-public class MarkdownGenerator {
+public class MarkupGenerator {
 
     private final Retro retro;
 
-    public MarkdownGenerator(Retro retro) {
+    public MarkupGenerator(Retro retro) {
         this.retro = retro;
     }
 
-    public String generateMarkdown() {
-        StringBuffer markdownBuffer = new StringBuffer();
-        markdownBuffer.append(generateAttendeeTable());
-        markdownBuffer.append(generateHeader("Liked"));
-        markdownBuffer.append(generateHeader("Learned"));
-        markdownBuffer.append(generateHeader("Lacked"));
-        markdownBuffer.append(generateHeader("Longed For"));
-        markdownBuffer.append(generateHeader("Actions"));
-        return markdownBuffer.toString();
+    public String generateMarkup() {
+        StringBuffer markupBuffer = new StringBuffer();
+        markupBuffer.append(generateAttendeeTable());
+        markupBuffer.append(generateHeader("Liked"));
+        markupBuffer.append(generateHeader("Learned"));
+        markupBuffer.append(generateHeader("Lacked"));
+        markupBuffer.append(generateHeader("Longed For"));
+        markupBuffer.append(generateHeader("Actions"));
+        return markupBuffer.toString();
     }
 
     private String generateAttendeeTable() {
