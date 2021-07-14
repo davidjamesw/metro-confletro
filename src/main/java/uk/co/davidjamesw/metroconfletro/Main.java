@@ -14,6 +14,7 @@ public class Main {
         Gson gson = new Gson();
         MarkupGenerator markupGenerator =
                 new MarkupGenerator(gson.fromJson(json, Retro.class));
+        Files.writeString(Path.of("conluenceWiki.txt"), markupGenerator.generateMarkup());
     }
 
 }
