@@ -1,7 +1,9 @@
 package uk.co.davidjamesw.metroconfletro;
 
+import uk.co.davidjamesw.metroconfletro.model.Item;
 import uk.co.davidjamesw.metroconfletro.model.Retro;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MarkupGenerator {
@@ -16,10 +18,15 @@ public class MarkupGenerator {
         StringBuffer markupBuffer = new StringBuffer();
         markupBuffer.append(generateAttendeeTable());
         markupBuffer.append(generateHeader("Liked"));
+        markupBuffer.append(generateBulletsFromItemList(retro.getLiked()));
         markupBuffer.append(generateHeader("Learned"));
+        markupBuffer.append(generateBulletsFromItemList(retro.getLearned()));
         markupBuffer.append(generateHeader("Lacked"));
+        markupBuffer.append(generateBulletsFromItemList(retro.getLacked()));
         markupBuffer.append(generateHeader("Longed For"));
+        markupBuffer.append(generateBulletsFromItemList(retro.getLongedFor()));
         markupBuffer.append(generateHeader("Actions"));
+        markupBuffer.append(generateBulletsFromItemList(retro.getActions()));
         return markupBuffer.toString();
     }
 
@@ -30,13 +37,19 @@ public class MarkupGenerator {
     }
 
     private String generateHeader(String headerText) {
-        return "\r\nh2. " + headerText;
+        return "\r\nh2. " + headerText + "\r\n";
     }
 
     private String getAttendeesAsBulletList() {
         return retro.getAttendees().stream()
              .map(attendee -> "* " + attendee + "\r\n")
              .collect(Collectors.joining());
+    }
+
+    private String generateBulletsFromItemList(List<Item> items) {
+        return items.stream()
+                    .map(item -> "* " + item.getContent() + "\r\n")
+                    .collect(Collectors.joining());
     }
 
 }
