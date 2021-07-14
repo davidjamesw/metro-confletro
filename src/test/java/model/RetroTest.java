@@ -8,6 +8,9 @@ import uk.co.davidjamesw.metroconfletro.model.Retro;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,6 +60,23 @@ public class RetroTest {
         assertNotNull(retro.getLongedFor());
         assertNotNull(retro.getLacked());
         assertNotNull(retro.getActions());
+    }
+
+    @Test
+    void retro_jsonContainsSeveralAuthors_allAppearInList() {
+        List<String> attendees = retroFromSampleJson.getAttendees();
+        assertTrue(attendees.contains("Jurgen Klopp"));
+        assertTrue(attendees.contains("Mo Salah"));
+        assertTrue(attendees.contains("Jordan Henderson"));
+        assertTrue(attendees.contains("Andy Robertson"));
+    }
+
+    @Test
+    void retro_jsonContainsSeveralAuthors_noDuplicatesInList() {
+        List<String> attendees = retroFromSampleJson.getAttendees();
+        List<String> uniqueAttendees = attendees.stream().distinct().collect(Collectors.toList());
+
+        assertEquals(uniqueAttendees.size(), attendees.size());
     }
 
 }

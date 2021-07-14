@@ -2,7 +2,11 @@ package uk.co.davidjamesw.metroconfletro.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Retro {
 
@@ -47,5 +51,16 @@ public class Retro {
 
     public List<Item> getActions() {
         return actions;
+    }
+
+    public List<String> getAttendees() {
+        List<Item> allGroups = Stream.of(getLiked(), getLongedFor(), getLearned(), getLacked(), getActions())
+                                     .flatMap(Collection::stream)
+                                     .collect(Collectors.toList());
+        return allGroups
+                .stream()
+                .map(Item::getAuthor)
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
