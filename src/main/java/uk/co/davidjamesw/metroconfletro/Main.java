@@ -1,7 +1,6 @@
 package uk.co.davidjamesw.metroconfletro;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 import uk.co.davidjamesw.metroconfletro.model.Retro;
 
 import java.io.IOException;

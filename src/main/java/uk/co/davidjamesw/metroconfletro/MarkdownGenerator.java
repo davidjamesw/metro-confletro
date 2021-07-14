@@ -14,14 +14,23 @@ public class MarkdownGenerator {
 
     public String generateMarkdown() {
         StringBuffer markdownBuffer = new StringBuffer();
-        markdownBuffer.append(getAttendeeTable());
+        markdownBuffer.append(generateAttendeeTable());
+        markdownBuffer.append(generateHeader("Liked"));
+        markdownBuffer.append(generateHeader("Learned"));
+        markdownBuffer.append(generateHeader("Lacked"));
+        markdownBuffer.append(generateHeader("Longed For"));
+        markdownBuffer.append(generateHeader("Actions"));
         return markdownBuffer.toString();
     }
 
-    private String getAttendeeTable() {
+    private String generateAttendeeTable() {
         return
                 "|| Date || Attendees\r\n"
                + "| | " + getAttendeesAsBulletList();
+    }
+
+    private String generateHeader(String headerText) {
+        return "\r\nh2. " + headerText;
     }
 
     private String getAttendeesAsBulletList() {
