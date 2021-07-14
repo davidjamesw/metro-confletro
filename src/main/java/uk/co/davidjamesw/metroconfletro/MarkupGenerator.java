@@ -48,6 +48,7 @@ public class MarkupGenerator {
 
     private String generateBulletsFromItemList(List<Item> items) {
         return items.stream()
+                    .filter(item -> item.getContent() != null)
                     .map(item -> "* " + item.getContent() + "\r\n")
                     .collect(Collectors.joining());
     }
